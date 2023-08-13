@@ -117,6 +117,7 @@ def album_update(request):
 
     return redirect('/album/')
 
+@csrf_exempt
 def api_album_insert(request):
     atitle = request.POST['a_title']
     atype = request.POST['a_type']
