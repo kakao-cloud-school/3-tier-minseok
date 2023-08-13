@@ -17,10 +17,10 @@ pipeline {
             steps {
                 script {
                     dir('web/'){
-                      def image = docker.build(joyoungkyung/jenkinshub:web2, '.')
+                      def image = docker.build('joyoungkyung/jenkinshub:web2', '.')
                     }
                     dir('was/'){
-                      def image = docker.build(joyoungkyung/jenkinshub, '.')
+                      def image = docker.build('joyoungkyung/jenkinshub', '.')
                     }
                 }
             }
