@@ -27,7 +27,7 @@ spec:
         io.kompose.service: nginx
     spec:
       containers:
-        - image: joyoungkyung/jenkinshub:web2
+        - image: innnnnwoo/web
           name: django-project-nginx
           ports:
             - containerPort: 80

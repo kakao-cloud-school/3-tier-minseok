@@ -27,7 +27,7 @@ spec:
         io.kompose.service: django-project
     spec:
       containers:
-        - image: joyoungkyung/jenkinshub
+        - image: innnnnwoo/jenkinshub
           name: django-project
           ports:
             - containerPort: 8080
