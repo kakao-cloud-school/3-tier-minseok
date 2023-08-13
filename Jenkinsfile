@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/kakao-cloud-school/django-project.git'
+                git branch: 'main', url: 'https://github.com/kakao-cloud-school/3-tier-minseok.git'
             }
         }
         stage('Build') {
