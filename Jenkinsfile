@@ -36,8 +36,8 @@ pipeline {
         stage('Docker Push') {
             steps {
                 script {
-                    sh "docker push 'joyoungkyung/jenkinshub:web2"
-                    sh "docker push 'joyoungkyung/jenkinshub"
+                    sh "docker push joyoungkyung/jenkinshub:web2"
+                    sh "docker push joyoungkyung/jenkinshub"
                 }
             }
         }
