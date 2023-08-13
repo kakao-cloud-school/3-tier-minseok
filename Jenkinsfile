@@ -22,6 +22,9 @@ pipeline {
                     dir('was/'){
                       def image = docker.build('joyoungkyung/jenkinshub', '.')
                     }
+                    dir('imagemaker/'){
+                      def image = docker.build('joyoungkyung/jenkinshub:imagemaker', '.')
+                    }
                 }
             }
         }
@@ -38,6 +41,7 @@ pipeline {
                 script {
                     sh "docker push joyoungkyung/jenkinshub:web2"
                     sh "docker push joyoungkyung/jenkinshub"
+                    sh "docker push joyoungkyung/jenkinshub:imagemaker"
                 }
             }
         }
