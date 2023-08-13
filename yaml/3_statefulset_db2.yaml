@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  namespace: webservice
+spec:
+  replicas: 1
+  serviceName: mysql
+  selector:
+    matchLabels:
+      io.kompose.service: db
+  template:
+    metadata:
+      labels:
+        io.kompose.service: db
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mysql
+        image: mysql:8
+        ports:
+          - name: mysqlport
+            protocol: TCP
+            containerPort: 3306
+        args: 
+          - --default-authentication-plugin=mysql_native_password
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: admin
+          - name: MYSQL_DATABASE
+            value: django_project
+          - name: MYSQL_USER
+            value: admin
+          - name: MYSQL_PASSWORD
+            value: admin
+        volumeMounts:
+          - name: db-pvc
+            mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: db-pvc
+        namespace: webservice
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi

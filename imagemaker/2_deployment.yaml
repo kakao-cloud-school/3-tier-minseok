@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imagemaker
+spec:
+  replicas: 1   
+  selector:
+    matchLabels:
+      app: imagemaker
+  template:
+    metadata:
+      labels:
+        app: imagemaker
+    spec:
+      containers:
+      - name: imagectn
+        image: innnnnwoo/imagemaker
+        ports: 
+          - containerPort: 8501
