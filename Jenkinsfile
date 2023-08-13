@@ -4,8 +4,8 @@ pipeline {
         githubPush() // GitHub에 커밋이 발생하면 자동으로 파이프라인 시작
     }
     environment {
-        REPOSITORY = "joyoungkyung/jenkinshub"
-        DOCKERHUB_CREDENTIALS = credentials('docker_access_token')
+        REPOSITORY = "innnnnwoo"
+        DOCKERHUB_CREDENTIALS = credentials('docker_accesstkn')
     }
     stages {
         stage('Checkout') {
@@ -17,13 +17,13 @@ pipeline {
             steps {
                 script {
                     dir('web/'){
-                      def image = docker.build('joyoungkyung/jenkinshub:web2', '.')
-                    }
-                    dir('was/'){
-                      def image = docker.build('joyoungkyung/jenkinshub', '.')
+                      def image = docker.build('innnnnwoo/web', '.')
                     }
                     dir('imagemaker/'){
-                      def image = docker.build('joyoungkyung/jenkinshub:imagemaker', '.')
+                      def image = docker.build('innnnnwoo/imagemaker', '.')
+                    }
+                    dir('was/'){
+                      def image = docker.build('innnnnwoo/jenkinshub', '.')
                     }
                 }
             }
@@ -39,9 +39,9 @@ pipeline {
         stage('Docker Push') {
             steps {
                 script {
-                    sh "docker push joyoungkyung/jenkinshub:web2"
-                    sh "docker push joyoungkyung/jenkinshub"
-                    sh "docker push joyoungkyung/jenkinshub:imagemaker"
+                    sh "docker push innnnnwoo/web"
+                    sh "docker push innnnnwoo/imagemaker"
+                    sh "docker push innnnnwoo/jenkinshub"
                 }
             }
         }
