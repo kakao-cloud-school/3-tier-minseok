@@ -45,5 +45,27 @@ pipeline {
                 }
             }
         }
+        stage('Update yaml'){
+            steps {
+                script{
+                    sh "sed -i 's|image: innnnnwoo/web/.*|image: innnnnwoo/web:${IMAGE_TAG}|' yaml/7_nginx-deploy.yaml"
+                    sh "sed -i 's|image: innnnnwoo/imagemaker/.*|image: innnnnwoo/imagemaker:${IMAGE_TAG}|' yaml/10_imagemaker_deploy.yaml"
+                    sh "sed -i 's|image: innnnnwoo/jenkinshub/.*|image: innnnnwoo/jenkinshub:${IMAGE_TAG}|' yaml/6_django_deploy.yaml"
+                }
+            }
+        }
+        stage('Commit Updated yaml') {
+            steps {
+                script {
+                    sh """
+                        git config user.name "dada0013"
+                        git config user.email "yoon351200@naver.com"
+                        git add yaml/*.yaml
+                        git commit -m "Update image tags to ${IMAGE_TAG}"
+                        git push origin main
+                    """
+                }
+            }
+        }
     }
 }
