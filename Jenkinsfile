@@ -6,6 +6,7 @@ pipeline {
     environment {
         REPOSITORY = "innnnnwoo"
         DOCKERHUB_CREDENTIALS = credentials('docker_accesstkn')
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
     stages {
         stage('Checkout') {
