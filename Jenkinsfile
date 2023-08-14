@@ -31,7 +31,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 script {
-                    def credentials = credentials('docker_access_token')
+                    def credentials = credentials('docker_accesstkn')
                     sh "echo \$DOCKERHUB_CREDENTIALS_PSW | docker login -u \$DOCKERHUB_CREDENTIALS_USR --password-stdin"
                 }
             }
