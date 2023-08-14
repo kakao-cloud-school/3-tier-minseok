@@ -57,66 +57,64 @@
                     onclick="location.href='/album_write/'">Add
             </button>
           </div>
+        </div>
 
 
-          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
-            {% if not rsAlbum %}
-              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <p class="text-center">내용이 없습니다! </p>
-              </div>
-            {% endif %}
-            {% for i in rsAlbum %}
-              <div class="col-lg-4 col-md-6 portfolio-item filter-{{ i.a_type|lower }}">
-                <div class="portfolio-wrap">
-                  <img src="{% static 'board/photos/' %}{{ i.a_image }}" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>{{ i.a_title }}</h4>
-                    <p>{{ i.a_type }}</p>
-                    <div class="portfolio-links">
-                      <a href="{% static 'board/photos/' %}{{ i.a_image }}"
-                         data-gallery="portfolioGallery" class="venobox" title="{{ i.a_title }}"><i
-                              class="bx bx-plus"></i></a>
-                      <a href="/album_view/?a_no={{ i.a_no }}" title="More Details"><i
-                              class="bx bx-link"></i></a>
-                    </div>
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+          {% if not rsAlbum %}
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+              <p class="text-center">내용이 없습니다! </p>
+            </div>
+          {% endif %}
+          {% for i in rsAlbum %}
+            <div class="col-lg-4 col-md-6 portfolio-item filter-{{ i.a_type|lower }}">
+              <div class="portfolio-wrap">
+                <img src="{% static 'board/photos/' %}{{ i.a_image }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>{{ i.a_title }}</h4>
+                  <p>{{ i.a_type }}</p>
+                  <div class="portfolio-links">
+                    <a href="{% static 'board/photos/' %}{{ i.a_image }}"
+                       data-gallery="portfolioGallery" class="venobox" title="{{ i.a_title }}"><i
+                            class="bx bx-plus"></i></a>
+                    <a href="/album_view/?a_no={{ i.a_no }}" title="More Details"><i
+                            class="bx bx-link"></i></a>
                   </div>
                 </div>
               </div>
-            {% endfor %}
+            </div>
+          {% endfor %}
 
 
 
-            {#                    {% for i in rsAlbum %}#}
-            {#                    {% if i.a_type == 'App' %}#}
-            {#                    <div class="col-lg-3 col-md-6 portfolio-item filter-app">#}
-            {#                      {% elif i.a_type == 'Card' %}#}
-            {#                      <div class="col-lg-3 col-md-6 portfolio-item filter-card">#}
-            {#                        {% else %}#}
-            {#                        <div class="col-lg-3 col-md-6 portfolio-item filter-web">#}
-            {#                          {% endif %}#}
-            {#                          <div class="portfolio-wrap">#}
-            {#                            <img src="{% static 'board/photos/' %}{{ i.a_image }}" class="img-fluid" alt="">#}
-            {#                            <div class="portfolio-info">#}
-            {#                              <h4>{{i.a_title}}</h4>#}
-            {#                              <p>{{i.a_type}}</p>#}
-            {#                              <div class="portfolio-links">#}
-            {#                                <a href="{% static 'board/photos/' %}{{ i.a_image }}"#}
-            {#                                   data-gallery="portfolioGallery" class="venobox" title="App 1"><i#}
-            {#                                        class="bx bx-plus"></i></a>#}
-            {#                                <a href="/album_view/?a_no={{i.a_no}}" title="More Details"><i#}
-            {#                                        class="bx bx-link"></i></a>#}
-            {#                              </div>#}
-            {#                            </div>#}
-            {#                          </div>#}
-            {#                        </div>#}
-            {##}
-            {#                        {% endfor %}#}
+          {#                    {% for i in rsAlbum %}#}
+          {#                    {% if i.a_type == 'App' %}#}
+          {#                    <div class="col-lg-3 col-md-6 portfolio-item filter-app">#}
+          {#                      {% elif i.a_type == 'Card' %}#}
+          {#                      <div class="col-lg-3 col-md-6 portfolio-item filter-card">#}
+          {#                        {% else %}#}
+          {#                        <div class="col-lg-3 col-md-6 portfolio-item filter-web">#}
+          {#                          {% endif %}#}
+          {#                          <div class="portfolio-wrap">#}
+          {#                            <img src="{% static 'board/photos/' %}{{ i.a_image }}" class="img-fluid" alt="">#}
+          {#                            <div class="portfolio-info">#}
+          {#                              <h4>{{i.a_title}}</h4>#}
+          {#                              <p>{{i.a_type}}</p>#}
+          {#                              <div class="portfolio-links">#}
+          {#                                <a href="{% static 'board/photos/' %}{{ i.a_image }}"#}
+          {#                                   data-gallery="portfolioGallery" class="venobox" title="App 1"><i#}
+          {#                                        class="bx bx-plus"></i></a>#}
+          {#                                <a href="/album_view/?a_no={{i.a_no}}" title="More Details"><i#}
+          {#                                        class="bx bx-link"></i></a>#}
+          {#                              </div>#}
+          {#                            </div>#}
+          {#                          </div>#}
+          {#                        </div>#}
+          {##}
+          {#                        {% endfor %}#}
 
 
-          </div>
         </div>
-      </div>
-      </div>
       </div>
     </section>
     <!-- ======= Services Section ======= -->
