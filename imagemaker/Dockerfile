@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-CMD ["streamlit", "run", "app.py"]
+ENTRYPOINT ["streamlit", "run", "app.py"]

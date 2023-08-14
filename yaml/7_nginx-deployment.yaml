@@ -1,3 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: web-pvc
+  namespace: webservice
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -33,5 +46,12 @@ spec:
             - containerPort: 80
               protocol: TCP
           resources: {}
+          volumeMounts:
+            - name: photos
+              mountPath: /static/board/photos
+      volumes:
+      - name: photos
+        persistentVolumeClaim:
+          claimName: web-pvc          
       restartPolicy: Always
 status: {}

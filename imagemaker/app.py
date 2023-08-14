@@ -53,7 +53,7 @@ save_button = st.button("장고에 저장")
 
 
 if save_button:
-    django_api_endpoint = "http://localhost/api/album_insert/"
+    django_api_endpoint = "http://backend-svc:8080/api/album_insert/"
 
     # 이미지 데이터를 가져옵니다.
     image_data = requests.get(st.session_state.image_url).content
@@ -69,6 +69,9 @@ if save_button:
     if response.status_code == 200:
         if response.json().get("success"):
             st.success(response.json().get("message"))
+            st.markdown(
+                '<a href="http://192.168.0.30/album/" target="_blank" style="display: inline-block; text-align: center; border: 1px solid #FF4B4B; padding: 10px 20px; margin: 20px 0px; border-radius: 3px; color: white; background-color: #FF4B4B; text-decoration: none;">앨범 보기</a>',
+                unsafe_allow_html=True)
         else:
             st.error("이미지 저장에 실패했습니다.")
     else:

@@ -14,3 +14,33 @@ spec:
   hostPath:
     path: "/str/db"
     type: DirectoryOrCreate
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: photos-pv
+spec:
+  capacity:
+    storage: 4Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.0.11
+    path: /str/photos
+
+--- 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: photos-pv-web
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.0.11
+    path: /str/photos
