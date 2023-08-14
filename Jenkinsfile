@@ -17,13 +17,13 @@ pipeline {
             steps {
                 script {
                     dir('web/'){
-                      def image = docker.build('innnnnwoo/web', '.')
+                      def image = docker.build('innnnnwoo/web:${IMAGE_TAG}', '.')
                     }
                     dir('imagemaker/'){
-                      def image = docker.build('innnnnwoo/imagemaker', '.')
+                      def image = docker.build('innnnnwoo/imagemaker:${IMAGE_TAG}', '.')
                     }
                     dir('was/'){
-                      def image = docker.build('innnnnwoo/jenkinshub', '.')
+                      def image = docker.build('innnnnwoo/jenkinshub:${IMAGE_TAG}', '.')
                     }
                 }
             }
@@ -39,9 +39,9 @@ pipeline {
         stage('Docker Push') {
             steps {
                 script {
-                    sh "docker push innnnnwoo/web"
-                    sh "docker push innnnnwoo/imagemaker"
-                    sh "docker push innnnnwoo/jenkinshub"
+                    sh "docker push innnnnwoo/web:${IMAGE_TAG}"
+                    sh "docker push innnnnwoo/imagemaker:${IMAGE_TAG}"
+                    sh "docker push innnnnwoo/jenkinshub:${IMAGE_TAG}"
                 }
             }
         }
