@@ -17,13 +17,13 @@ pipeline {
             steps {
                 script {
                     dir('web/'){
-                      def image = docker.build('${REPOSITORY}/web', '.')
+                      def image = docker.build('innnnnwoo/web', '.')
                     }
                     dir('imagemaker/'){
-                      def image = docker.build('${REPOSITORY}/imagemaker', '.')
+                      def image = docker.build('innnnnwoo/imagemaker', '.')
                     }
                     dir('was/'){
-                      def image = docker.build('${REPOSITORY}/jenkinshub', '.')
+                      def image = docker.build('innnnnwoo/jenkinshub', '.')
                     }
                 }
             }
@@ -39,9 +39,9 @@ pipeline {
         stage('Docker Push') {
             steps {
                 script {
-                    sh "docker push ${REPOSITORY}/web"
-                    sh "docker push ${REPOSITORY}/imagemaker"
-                    sh "docker push ${REPOSITORY}/jenkinshub"
+                    sh "docker push innnnnwoo/web"
+                    sh "docker push innnnnwoo/imagemaker"
+                    sh "docker push innnnnwoo/jenkinshub"
                 }
             }
         }
